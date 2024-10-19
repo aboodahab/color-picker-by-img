@@ -25,10 +25,11 @@ input{
     background-color: white;
     border-radius: 50%;
 display: none;
+
 justify-content: center;
 align-items: center;
   }
 .small-square{
-  width: 2.9px;
+  width: 32px;
   height: 64px;
 }

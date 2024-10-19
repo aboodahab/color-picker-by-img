@@ -1,14 +1,13 @@
+
 import { canvas ,imgInp,context,p,circle,pixelsSquare } from "./j.mjs";
 const onCopy=()=>{
   navigator.clipboard.writeText(p.textContent);
 }
+
 const showPixels= evt =>{
   for(let i=0;i<pixelsSquare.length;i++){
-    console.log(evt[0],evt[1])
-    for(let k=0;k<evt.length;k++){
-pixelsSquare[i].style.background=`rgba(${evt[0]},${evt[1]},${evt[2]},${evt[3]})`
-  
- }
+    console.log(evt)
+ pixelsSquare[i].style.backgroundColor=`rgb(${evt[i]},${evt[i]*4},${evt[i]*5})`
 }
 
 }
@@ -22,7 +21,7 @@ circle.style.display="flex"
     mouseX = evt.layerX;
     mouseY = evt.layerY;
   }
-  let c = context.getImageData(mouseX, mouseY, 36,36).data;
+  let c = context.getImageData(mouseX, mouseY, 4,4).data;
 
   const {clientX,clientY}=evt
   circle.style.left=`${clientX}px`
@@ -47,5 +46,3 @@ imgInp.onchange = evt => {
   canvas.addEventListener("click", onCopy);
 
 };
-
-//button.addEventListener("mousemove", onCopy);
