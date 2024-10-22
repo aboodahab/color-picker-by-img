@@ -5,9 +5,15 @@ const onCopy=()=>{
 }
 
 const showPixels= evt =>{
+  [
+    1,1,1,1
+   ,2,2,2,2,
+3,3,3,3,
+4,4,4,4
+  ]
   for(let i=0;i<pixelsSquare.length;i++){
     console.log(evt)
- pixelsSquare[i].style.backgroundColor=`rgb(${evt[i]},${evt[i]*4},${evt[i]*5})`
+ pixelsSquare[i].style.backgroundColor=`rgba(${evt[i*4+0]},${evt[i*4+1]},${evt[i*4+2]+2},${evt[i*4+3]}`
 }
 
 }
@@ -21,7 +27,7 @@ circle.style.display="flex"
     mouseX = evt.layerX;
     mouseY = evt.layerY;
   }
-  let c = context.getImageData(mouseX, mouseY, 4,4).data;
+  let c = context.getImageData(mouseX, mouseY, 6,6).data;
 
   const {clientX,clientY}=evt
   circle.style.left=`${clientX}px`
