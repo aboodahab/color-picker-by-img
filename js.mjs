@@ -4,16 +4,18 @@ const onCopy=()=>{
   navigator.clipboard.writeText(p.textContent);
 }
 
-const showPixels= evt=>{
+const showPixels= (evt,x,y)=>{
   [
     1,1,1,1
    ,2,2,2,2,
 3,3,3,3,
 4,4,4,4
   ]
+  context.fill()
+  context.fillRect(x,y,20,200)
   for(let i=0;i<pixelsSquare.length;i++){
-
-pixelsSquare[i].style.backgroundColor=`rgba(${evt[i*4+0]},${evt[i*4+1]},${evt[i*4+2]},${evt[i*4+3]}`
+    context.fillStyle=`rgba(${evt[i*4+0]},${evt[i*4+1]},${evt[i*4+2]},${evt[i*4+3]}`
+ pixelsSquare[i].style.backgroundColor=`rgba(${evt[i*4+0]},${evt[i*4+1]},${evt[i*4+2]},${evt[i*4+3]}`
 }
 
 }
@@ -33,9 +35,12 @@ circle.style.display="flex"
   const {clientX,clientY}=evt
   circle.style.left=`${clientX}px`
   circle.style.top=`${clientY}px`
-  showPixels(c)
 
-p.style.color=`rgb(${c[0]},${c[1]},${c[2]})`
+  
+  showPixels(c,clientX,clientY)
+
+
+// p.style.color=`rgb(${c[0]},${c[1]},${c[2]})`
   p.textContent = `rgb(${c[0]},${c[1]},${c[2]})`;
 };
 const  onAdd= evt => {
