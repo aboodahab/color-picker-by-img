@@ -2,24 +2,20 @@
 import { canvas ,imgInp,context,p,circle,pixelsSquare } from "./j.mjs";
 const onCopy=()=>{
   navigator.clipboard.writeText(p.textContent);
+  
 }
 
-const showPixels= (evt,x,y)=>{
-  [
-    1,1,1,1
-   ,2,2,2,2,
-3,3,3,3,
-4,4,4,4
-  ]
-  context.fill()
-  context.fillRect(x,y,20,200)
+function showPixels(evt,x,y){
   for(let i=0;i<pixelsSquare.length;i++){
+    context.clearRect(x,y,canvas.width,canvas.height)
+  onAdd()
+  context.fillRect(x,y,20,200)
     context.fillStyle=`rgba(${evt[i*4+0]},${evt[i*4+1]},${evt[i*4+2]},${evt[i*4+3]}`
  pixelsSquare[i].style.backgroundColor=`rgba(${evt[i*4+0]},${evt[i*4+1]},${evt[i*4+2]},${evt[i*4+3]}`
 }
 
 }
-const onMouseMove = evt => {
+function onMouseMove(evt) {
   let mouseX, mouseY;
   
 circle.style.display="flex"
@@ -43,11 +39,10 @@ circle.style.display="flex"
 // p.style.color=`rgb(${c[0]},${c[1]},${c[2]})`
   p.textContent = `rgb(${c[0]},${c[1]},${c[2]})`;
 };
-const  onAdd= evt => {
+function onAdd() {
   const [file] = imgInp.files;
   if (file) {
     const img = URL.createObjectURL(file);
-
     let base_image = new Image();
     base_image.src = img;
 
